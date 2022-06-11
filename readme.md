@@ -9,10 +9,10 @@ The bot reads the board using a [tampermonkey](https://www.tampermonkey.net/) us
 -   Install the tampermonkey userscript
 
 ```
-  LINK
+https://raw.githubusercontent.com/bitfexl/lichess-bot-V3/master/js/lichessscript.js
 ```
 
--   Execute the java app (run.bat) [LINK]()
+-   Execute the java app (run.bat in dist folder) [download](https://downgit.github.io/#/home?url=https://github.com/bitfexl/lichess-bot-V3/tree/master/dist)
 
 ## Usage
 
