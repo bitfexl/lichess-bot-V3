@@ -20,19 +20,21 @@
     let bestMove = "";
 
     let updateInterval = setInterval(async () => {
-        let fenstr = await readBoardFen();
-        if (fenstr != lastFen && fenstr !== null) {
-            lastFen = fenstr;
+        if (isGameRunning()) {
+            let fenstr = await readBoardFen();
+            if (fenstr != lastFen && fenstr !== null) {
+                lastFen = fenstr;
 
-            if (fenstr.split(" ")[1] == readOwnColor()) {
-                bestMove = await getBestMove(fenstr, thinkTimeMs);
+                if (fenstr.split(" ")[1] == readOwnColor()) {
+                    bestMove = await getBestMove(fenstr, thinkTimeMs);
 
-                console.log(fenstr);
-                console.log(bestMove);
+                    console.log(fenstr);
+                    console.log(bestMove);
 
-                try {
-                    drawMove(bestMove);
-                } catch {}
+                    try {
+                        drawMove(bestMove);
+                    } catch {}
+                }
             }
         }
     }, updateIntervalMs);
@@ -76,6 +78,10 @@
 
     function readOwnColor() {
         return document.querySelector("meta[property='og:url']").content.endsWith("black") ? "b" : "w";
+    }
+
+    function isGameRunning() {
+        return document.title.startsWith("Waiting for opponent") || document.title.startsWith("Your turn");
     }
 
     function drawMove(move) {
