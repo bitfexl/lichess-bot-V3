@@ -11,16 +11,19 @@
 // ==/UserScript==
 
 (async function () {
-    const updateIntervalMs = 400;
+    const updateIntervalMs = 40;
     const thinkTimeMs = 3000;
     const port = 37734;
     const url = "http://localhost:" + port + "/stockfish";
 
+    let positionRead = false;
     let lastFen = "";
     let bestMove = "";
 
     let updateInterval = setInterval(async () => {
-        if (isGameRunning()) {
+        if (!positionRead && isMyTurn()) {
+            positionRead = true;
+
             let fenstr = await readBoardFen();
             if (fenstr != lastFen && fenstr !== null) {
                 lastFen = fenstr;
@@ -36,6 +39,9 @@
                     } catch {}
                 }
             }
+        }
+        if (!isMyTurn()) {
+            positionRead = false;
         }
     }, updateIntervalMs);
 
@@ -82,6 +88,10 @@
 
     function isGameRunning() {
         return document.title.startsWith("Waiting for opponent") || document.title.startsWith("Your turn");
+    }
+
+    function isMyTurn() {
+        return document.title.startsWith("Your turn");
     }
 
     function drawMove(move) {
