@@ -6,7 +6,7 @@ A [lichess.org](https://lichess.org/) bot.
 
 The bot reads the board using a [tampermonkey](https://www.tampermonkey.net/) userscript and passes the data on to an application running on the pc.
 
--   Install the tampermonkey userscript
+-   Install the tampermonkey userscript [install](https://gist.github.com/bitfexl/be60ead10379a4c69c2aebcd126df620/raw/3f821b1e14f1123553f08f4289342fb5518394b5/lichessscript.user.js)
 
 ```
 https://raw.githubusercontent.com/bitfexl/lichess-bot-V3/master/js/lichessscript.js
