@@ -1,3 +1,6 @@
+> [!WARNING]  
+> Deprecated! Use this https://gist.github.com/bitfexl/727b40e85d898308923384bc48df9185 instead.
+
 # Lichessbot
 
 A [lichess.org](https://lichess.org/) bot.
